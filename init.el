@@ -75,5 +75,7 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+(require 'color-theme-ir-black)
 
+(color-theme-ir-black)
 ;;; init.el ends here
