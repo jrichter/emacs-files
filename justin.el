@@ -23,3 +23,7 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq-default save-abbrevs nil)
+
+;; This is how to set a keybinding
+;; (global-set-key (kbd "C-c q") 'command)
+;; where 'command is the command you want to run
