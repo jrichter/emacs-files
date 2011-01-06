@@ -1,7 +1,7 @@
 (require 'color-theme-ir-black)
 (color-theme-ir-black)
 (set-face-attribute 'default nil :height 100)
-(set-face-attribute 'default nil :font "Monaco-10")
+(set-face-attribute 'default nil :font "Monaco-12")
 (if (window-system)
     (set-frame-size (selected-frame) 100 115))
 
@@ -27,3 +27,5 @@
 ;; This is how to set a keybinding
 ;; (global-set-key (kbd "C-c q") 'command)
 ;; where 'command is the command you want to run
+
+(global-set-key (kbd "C-x f") 'recentf-open-files)
