@@ -24,8 +24,48 @@
 (setq-default indent-tabs-mode nil)
 (setq-default save-abbrevs nil)
 
+;; My Functions
+(defun delete-enclosed-text ()
+  "Delete texts between any pair of delimiters."
+  (interactive)
+  (save-excursion
+    (let (p1 p2)
+      (skip-chars-backward "^(<[\"\'") (setq p1 (point))
+      (skip-chars-forward "^)>]\"\'") (setq p2 (point))
+      (delete-region p1 p2))))
+
+(transient-mark-mode 1)
+
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+
+
+(defun quick-copy-line ()
+  "Copy the whole line that point is on and move to the beginning of the next line.
+    Consecutive calls to this command append each line to the
+    kill-ring."
+  (interactive)
+  (let ((beg (line-beginning-position 1))
+        (end (line-beginning-position 2)))
+    (if (eq last-command 'quick-copy-line)
+        (kill-append (buffer-substring beg end) (< end beg))
+      (kill-new (buffer-substring beg end))))
+  (beginning-of-line 2))
+
 ;; This is how to set a keybinding
 ;; (global-set-key (kbd "C-c q") 'command)
 ;; where 'command is the command you want to run
 
+
 (global-set-key (kbd "C-x f") 'recentf-open-files)
+
+(global-set-key (kbd "C-x '") 'delete-enclosed-text)
+
+(global-set-key (kbd "C-x C-y") 'quick-copy-line)
+
+(global-set-key (kbd "C-x y") 'select-current-line)
+
+
