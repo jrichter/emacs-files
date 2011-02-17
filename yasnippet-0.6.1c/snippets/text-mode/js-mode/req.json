@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : AJAX - JSON
+# --
+new Request.JSON({
+  onSuccess: function(responseJSON, responseText) {
+    $0
+  }
+}).${1:send}(${2:url});

@@ -1,30 +1,51 @@
 (require 'color-theme-ir-black)
 (color-theme-ir-black)
+
+
 (set-face-attribute 'default nil :height 100)
 (set-face-attribute 'default nil :font "Monaco-12")
+
 (if (window-system)
     (set-frame-size (selected-frame) 100 115))
 
 ;; Spell Checker - on Ubuntu 10.10 remove *.el and *.elc from
 ;; /usr/share/emacs23/site-lisp/dictionaries-common to make
 ;; flyspell-mode work
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(autoload 'flyspell-delay-command "flyspell" "Delay on command." t) (autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
 
-;; emacs rails git://gitorious.org/emacs-rails/emacs-rails.git
-(add-to-list 'load-path "~/.emacs.d/emacs-rails")
-(require 'rails)
+(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+(autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
+(autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
+
+;; Interactively Do Things (highly recommended, but not strictly required)
+(require 'ido)
+(ido-mode t)
+
+;; Rinari Not a Rails IDE - well sortof https://github.com/eschulte/rinari.git
+(add-to-list 'load-path "~/.emacs.d/rinari")
+(require 'rinari)
+
 ;; rhtml mode https://github.com/eschulte/rhtml.git
 (add-to-list 'load-path "~/.emacs.d/rhtml")
 (require 'rhtml-mode)
 
+;; YASnippet - code completion http://code.google.com/p/yasnippet/
+:: Extra snippets https://github.com/rejeep/yasnippets.git
+(add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c")
+(require 'yasnippet) 
+     (yas/initialize)
+     (yas/load-directory "~/.emacs.d/yasnippet-0.6.1c/snippets")
+             
 ;; setq-default sets values only in buffers that do not have their own
 ;; local values for the variable 
+
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq-default save-abbrevs nil)
+(setq default-truncate-lines t)
+(setq make-backup-files nil)
 
 ;; My Functions
+
 (defun delete-enclosed-text ()
   "Delete texts between any pair of delimiters."
   (interactive)
@@ -34,6 +55,8 @@
       (skip-chars-forward "^)>]\"\'") (setq p2 (point))
       (delete-region p1 p2))))
 
+(global-set-key (kbd "C-x '") 'delete-enclosed-text)
+
 (transient-mark-mode 1)
 
 (defun select-current-line ()
@@ -42,6 +65,7 @@
   (end-of-line) ; move to end of line
   (set-mark (line-beginning-position)))
 
+(global-set-key (kbd "C-x y") 'select-current-line)
 
 (defun quick-copy-line ()
   "Copy the whole line that point is on and move to the beginning of the next line.
@@ -55,17 +79,26 @@
       (kill-new (buffer-substring beg end))))
   (beginning-of-line 2))
 
+(global-set-key (kbd "C-x C-y") 'quick-copy-line)
+
+(defun insert-line-above ()
+  (interactive)
+  (move-beginning-of-line 1)
+  (insert "\n")
+  (previous-line 1))
+
+(global-set-key (kbd "C-<return>") 'insert-line-above)
+
+(defun insert-line-below ()
+  (interactive)
+  (move-end-of-line 1)
+  (insert "\n"))
+
+(global-set-key (kbd "M-<return>") 'insert-line-below)
+
 ;; This is how to set a keybinding
 ;; (global-set-key (kbd "C-c q") 'command)
 ;; where 'command is the command you want to run
 
-
-(global-set-key (kbd "C-x f") 'recentf-open-files)
-
-(global-set-key (kbd "C-x '") 'delete-enclosed-text)
-
-(global-set-key (kbd "C-x C-y") 'quick-copy-line)
-
-(global-set-key (kbd "C-x y") 'select-current-line)
-
+;;(global-set-key (kbd "C-x f") 'recentf-open-files)
 
