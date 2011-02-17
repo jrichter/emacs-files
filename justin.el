@@ -11,14 +11,9 @@
 ;; Spell Checker - on Ubuntu 10.10 remove *.el and *.elc from
 ;; /usr/share/emacs23/site-lisp/dictionaries-common to make
 ;; flyspell-mode work
-
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
 (autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
-
-;; Interactively Do Things (highly recommended, but not strictly required)
-(require 'ido)
-(ido-mode t)
 
 ;; Rinari Not a Rails IDE - well sortof https://github.com/eschulte/rinari.git
 (add-to-list 'load-path "~/.emacs.d/rinari")
@@ -29,7 +24,7 @@
 (require 'rhtml-mode)
 
 ;; YASnippet - code completion http://code.google.com/p/yasnippet/
-:: Extra snippets https://github.com/rejeep/yasnippets.git
+;; Extra snippets https://github.com/rejeep/yasnippets.git
 (add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c")
 (require 'yasnippet) 
      (yas/initialize)
@@ -37,15 +32,12 @@
              
 ;; setq-default sets values only in buffers that do not have their own
 ;; local values for the variable 
-
 (setq-default tab-width 2)
-(setq-default indent-tabs-mode nil)
 (setq-default save-abbrevs nil)
 (setq default-truncate-lines t)
 (setq make-backup-files nil)
 
 ;; My Functions
-
 (defun delete-enclosed-text ()
   "Delete texts between any pair of delimiters."
   (interactive)
