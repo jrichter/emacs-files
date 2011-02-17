@@ -88,9 +88,6 @@
 
 (global-set-key (kbd "M-<return>") 'insert-line-below)
 
-;; This is how to set a keybinding
-;; (global-set-key (kbd "C-c q") 'command)
-;; where 'command is the command you want to run
-
-;;(global-set-key (kbd "C-x f") 'recentf-open-files)
+;; Keybinding for commenting region
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
