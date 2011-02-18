@@ -15,6 +15,11 @@
 (autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
 (autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
 
+;; Textmate mode https://github.com/defunkt/textmate.el.git
+(add-to-list 'load-path "~/.emacs.d/textmate.el")
+(require 'textmate)
+(textmate-mode)
+
 ;; Rinari Not a Rails IDE - well sortof https://github.com/eschulte/rinari.git
 (add-to-list 'load-path "~/.emacs.d/rinari")
 (require 'rinari)
