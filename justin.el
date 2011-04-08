@@ -1,6 +1,11 @@
-(require 'color-theme-ir-black)
-(color-theme-ir-black)
+;; (require 'color-theme-ir-black)
+;; (color-theme-ir-black)
 
+;; (require 'justin-color-theme)
+;; (justin-color-theme)
+
+(require 'inspiration)
+(inspiration)
 
 (set-face-attribute 'default nil :height 100)
 (set-face-attribute 'default nil :font "Monaco-12")
@@ -91,7 +96,7 @@
   (insert "\n")
   (previous-line 1))
 
-(global-set-key (kbd "C-<return>") 'insert-line-above)
+(global-set-key (kbd "C-M-<return>") 'insert-line-above)
 
 (defun insert-line-below ()
   (interactive)
