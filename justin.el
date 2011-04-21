@@ -10,9 +10,6 @@
 (set-face-attribute 'default nil :height 100)
 (set-face-attribute 'default nil :font "Monaco-12")
 
-(if (window-system)
-    (set-frame-size (selected-frame) 100 115))
-
 ;; Spell Checker - on Ubuntu 10.10 remove *.el and *.elc from
 ;; /usr/share/emacs23/site-lisp/dictionaries-common to make
 ;; flyspell-mode work
@@ -107,4 +104,26 @@
 
 ;; Keybinding for commenting region
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+
+(global-set-key [f4] 'speedbar-get-focus)
+(global-set-key [f6] 'buffer-menu)
+(global-set-key [end] 'end-of-line)
+(global-set-key [home] 'beginning-of-line)
+
+;; (if (window-system)
+;;     (progn
+;;       (set-frame-size (selected-frame) 130 150)
+;;       ))
+
+(defun arrange-frame (w h x y)
+  "Set the width, height, and x/y position of the current frame"
+  (let ((frame (selected-frame)))
+    (delete-other-windows)
+    (set-frame-position frame x y)
+    (set-frame-size frame w h)))
+
+ (setq initial-frame-alist
+       '((top . 2) (left . 22) (width . 129) (height . 90)))
+ (arrange-frame 130 90 2 22)
+ (speedbar t)
 
