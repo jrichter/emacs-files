@@ -110,6 +110,8 @@
 (global-set-key [end] 'end-of-line)
 (global-set-key [home] 'beginning-of-line)
 
+(global-set-key (kbd "C-S-k") 'delete-region)
+
 ;; (if (window-system)
 ;;     (progn
 ;;       (set-frame-size (selected-frame) 130 150)
