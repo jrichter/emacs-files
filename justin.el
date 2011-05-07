@@ -8,7 +8,7 @@
 (inspiration)
 
 (set-face-attribute 'default nil :height 100)
-(set-face-attribute 'default nil :font "Monaco-12")
+(set-face-attribute 'default nil :font "Monaco-11")
 
 ;; Spell Checker - on Ubuntu 10.10 remove *.el and *.elc from
 ;; /usr/share/emacs23/site-lisp/dictionaries-common to make
@@ -43,7 +43,11 @@
 (require 'yasnippet) 
      (yas/initialize)
      (yas/load-directory "~/.emacs.d/yasnippet-0.6.1c/snippets")
-             
+;; Haml mode
+(require 'haml-mode)
+;; Sass mode
+(require 'sass-mode)
+
 ;; setq-default sets values only in buffers that do not have their own
 ;; local values for the variable 
 (setq-default tab-width 2)
@@ -124,8 +128,9 @@
     (set-frame-position frame x y)
     (set-frame-size frame w h)))
 
- (setq initial-frame-alist
-       '((top . 2) (left . 22) (width . 129) (height . 90)))
- (arrange-frame 130 90 2 22)
+ ;; (setq initial-frame-alist
+ ;;       '((top . 2) (left . 22) (width . 129) (height . 90)))
+
+(arrange-frame 115 80 2 22)
  (speedbar t)
 
