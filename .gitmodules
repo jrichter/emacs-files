@@ -1,0 +1,3 @@
+[submodule "zenburn-el"]
+	path = zenburn-el
+	url = https://github.com/dbrock/zenburn-el.git

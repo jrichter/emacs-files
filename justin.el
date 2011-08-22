@@ -7,15 +7,18 @@
 (require 'inspiration)
 (inspiration)
 
+;;(require 'zenburn)
+;;(zenburn)
+
 (set-face-attribute 'default nil :height 100)
 (set-face-attribute 'default nil :font "Monaco-11")
 
 ;; Spell Checker - on Ubuntu 10.10 remove *.el and *.elc from
 ;; /usr/share/emacs23/site-lisp/dictionaries-common to make
 ;; flyspell-mode work
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
-(autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
+;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;; (autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
+;; (autoload 'tex-mode-flyspell-verify "flyspell" "" t) 
 
 ;; Textmate mode https://github.com/defunkt/textmate.el.git
 ;; (add-to-list 'load-path "~/.emacs.d/textmate.el")
@@ -23,6 +26,9 @@
 ;; (textmate-mode)
 ;; Redefine some textmate-mode keys
 
+;; Lua Mode
+(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
+    (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 
 
 ;; Rinari Not a Rails IDE - well sortof https://github.com/eschulte/rinari.git
@@ -39,10 +45,10 @@
 
 ;; YASnippet - code completion http://code.google.com/p/yasnippet/
 ;; Extra snippets https://github.com/rejeep/yasnippets.git
-(add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c")
-(require 'yasnippet) 
-     (yas/initialize)
-     (yas/load-directory "~/.emacs.d/yasnippet-0.6.1c/snippets")
+;; (add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c")
+;; (require 'yasnippet) 
+;;      (yas/initialize)
+;;      (yas/load-directory "~/.emacs.d/yasnippet-0.6.1c/snippets")
 ;; Haml mode
 (require 'haml-mode)
 ;; Sass mode
@@ -77,25 +83,12 @@
 
 (global-set-key (kbd "C-x y") 'select-current-line)
 
-(defun quick-copy-line ()
-  "Copy the whole line that point is on and move to the beginning of the next line.
-    Consecutive calls to this command append each line to the
-    kill-ring."
-  (interactive)
-  (let ((beg (line-beginning-position 1))
-        (end (line-beginning-position 2)))
-    (if (eq last-command 'quick-copy-line)
-        (kill-append (buffer-substring beg end) (< end beg))
-      (kill-new (buffer-substring beg end))))
-  (beginning-of-line 2))
-
-(global-set-key (kbd "C-x C-y") 'quick-copy-line)
-
 (defun insert-line-above ()
   (interactive)
   (move-beginning-of-line 1)
   (insert "\n")
   (previous-line 1))
+
 
 (global-set-key (kbd "C-M-<return>") 'insert-line-above)
 
@@ -109,7 +102,7 @@
 ;; Keybinding for commenting region
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
-(global-set-key [f4] 'speedbar-get-focus)
+(global-set-key [f5] 'speedbar-get-focus)
 (global-set-key [f6] 'buffer-menu)
 (global-set-key [end] 'end-of-line)
 (global-set-key [home] 'beginning-of-line)
@@ -121,16 +114,16 @@
 ;;       (set-frame-size (selected-frame) 130 150)
 ;;       ))
 
-(defun arrange-frame (w h x y)
-  "Set the width, height, and x/y position of the current frame"
-  (let ((frame (selected-frame)))
-    (delete-other-windows)
-    (set-frame-position frame x y)
-    (set-frame-size frame w h)))
+;; (defun arrange-frame (w h x y)
+;;   "Set the width, height, and x/y position of the current frame"
+;;   (let ((frame (selected-frame)))
+;;     (delete-other-windows)
+;;     (set-frame-position frame x y)
+;;     (set-frame-size frame w h)))
 
  ;; (setq initial-frame-alist
  ;;       '((top . 2) (left . 22) (width . 129) (height . 90)))
 
-(arrange-frame 115 80 2 22)
- (speedbar t)
+;; (arrange-frame 115 80 2 22)
+;; (speedbar t)
 

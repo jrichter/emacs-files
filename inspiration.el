@@ -14,7 +14,7 @@
      (region ((t (:background "#323232"))))
      (hl-line ((t (:background "#151515"))))
      (minibuffer-prompt ((t (:foreground "#7299ff" :bold t))))     
-     (font-lock-comment-face ((t (:foreground "#4c2d3c"))))
+     (font-lock-comment-face ((t (:foreground "#4c2ddc"))))
      (font-lock-constant-face ((t (:foreground "#851878"))))
      (font-lock-builtin-face ((t (:foreground "#00B2BD"))))
      (font-lock-function-name-face ((t (:foreground "#0492FF"))))
